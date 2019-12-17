@@ -1,0 +1,25 @@
+#main .header{
+  display:flex;
+  align-items:center;
+  padding: 10px 0;
+  border-bottom:1px solid #eee;
+}
+#main .header .city{
+  width: 50px;
+  text-align: center;
+}
+#main .header .inputBox{
+  flex:1 1;
+}
+#main .header .inputBox input{
+  height: 30px;
+  border-radius:20px;
+  border: 1px solid #000;
+  outline:0px;
+  width:100%;
+}
+#main .header .map{
+  margin-left: auto;
+  width:50px;
+  text-align: center;
+}
