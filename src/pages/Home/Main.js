@@ -1,5 +1,6 @@
 import React from 'react';
 import './Main.css';
+import '../../assets/styleSheets/iconfont.css';
 
 export default class Main extends React.Component{
   render(){
@@ -10,10 +11,11 @@ export default class Main extends React.Component{
             <p>城市</p>
           </div>
           <div className="inputBox">
+            <span className="iconfont">&#xe696;</span>
             <input/>
           </div>
           <div className="map">
-            <p>地图123</p>
+            <p>地图</p>
           </div>
         </header>
       </div>
