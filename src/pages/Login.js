@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Flex, WhiteSpace, List, InputItem, WingBlank, Button,Toast } from 'antd-mobile';
-import '../assets/styleSheets/iconfont.css';
+import {LoginApi} from '../apis/userApi';
 
 export default class Login extends React.Component {
   state={
@@ -9,6 +9,7 @@ export default class Login extends React.Component {
     pwd:'',
     hasError:false
   };
+  // 输入用户名
   nameInput = (val) => {
     if(val.replace(/\s/g,'').length<11){
       this.setState({hasError:true})
@@ -17,15 +18,28 @@ export default class Login extends React.Component {
     }
     this.setState({username:val})
   };
+  // 错误提示
   onErrorClick = () => {
     if (this.state.hasError) {
       Toast.info('请输入正确的手机号！');
     }
-  }
+  };
+  // 输入密码
   pwdInput = (val) => {
     this.setState({pwd:val})    
   };
-  
+  // 登录
+  login = () => {
+    const {username,pwd} = this.state;
+    LoginApi({password:pwd,phoneNum:username})
+    .then(res => {
+      localStorage.setItem('token',res.token);
+      Toast.loading('登录中...', 1, () => {
+        this.props.history.replace('/');
+      });
+    })
+    .catch(err => {console.log(err)})
+  };
   render() {
     return (
       <div style={{ position: 'fixed', left: 0, right: 0, top: 0, bottom: 0, background: '#fff' }}>
@@ -57,7 +71,7 @@ export default class Login extends React.Component {
           </List>
           <WhiteSpace size="lg" />
           <WhiteSpace size="lg" />
-          <Button type="primary">登录</Button>
+          <Button type="primary" onClick={this.login}>登录</Button>
           <WhiteSpace size="md" />
           <Flex justify="between">
             <Link to="/register" style={{ color: '#0af' }}>手机快速登录</Link>

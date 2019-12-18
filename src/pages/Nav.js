@@ -25,6 +25,16 @@ const ErrorPage = LoadAble({
   loading: Loading
 })
 
+const CityList = LoadAble({
+  loader: () => import('./Home/homePages/CityList'),
+  loading: Loading
+})
+
+const Search = LoadAble({
+  loader: () => import('./Home/homePages/Search'),
+  loading: Loading
+})
+
 export default class Nav extends React.Component{
   render(){
     return (
@@ -35,6 +45,10 @@ export default class Nav extends React.Component{
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <Route path="/personal" component={Personal}/>
+
+            <Route path="/citylist" component={CityList}/>
+            <Route path="/search" component={Search}/>
+            
             <Route component={ErrorPage}/>
           </Switch>
         </HashRouter>
