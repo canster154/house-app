@@ -8,5 +8,7 @@ import 'antd-mobile/dist/antd-mobile.css';
 import './assets/styleSheets/iconfont.css';
 // 引入axios拦截器
 import './utils/axiosUtil';
+// 引入redux仓库
+import './utils/store';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -14,6 +14,11 @@ const Chat = LoadAble({
   loading: Loading
 })
 
+const History = LoadAble({
+  loader: () => import('./homePages/History'),
+  loading: Loading
+})
+
 const My = LoadAble({
   loader: () => import('./homePages/My'),
   loading: Loading
@@ -27,7 +32,7 @@ export default class Main extends React.Component {
       { id: 2, title: '推荐', icon: '\ue60b', iconSe: '\ue60d' },
       { id: 3, title: '我的', icon: '\ue641', iconSe: '\ue612' },
     ],
-    selectedTab: 3
+    selectedTab: 0
   };
   renderContent = (id) => {
     switch (id) {
@@ -36,7 +41,7 @@ export default class Main extends React.Component {
       case 1:
         return <Chat />;
       case 2:
-        return <p>推荐中...</p>;
+        return <History/>;
       case 3:
         return <My />;
       default:

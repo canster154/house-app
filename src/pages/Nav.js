@@ -35,6 +35,11 @@ const Search = LoadAble({
   loading: Loading
 })
 
+const Detail = LoadAble({
+  loader: () => import('./Home/homePages/detail'),
+  loading: Loading
+})
+
 export default class Nav extends React.Component{
   render(){
     return (
@@ -48,6 +53,8 @@ export default class Nav extends React.Component{
 
             <Route path="/citylist" component={CityList}/>
             <Route path="/search" component={Search}/>
+
+            <Route path="/detail" component={Detail}/>
             
             <Route component={ErrorPage}/>
           </Switch>
